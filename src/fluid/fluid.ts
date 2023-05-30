@@ -1,0 +1,6 @@
+
+
+type FluidCube = {
+    scale: number,
+
+}
