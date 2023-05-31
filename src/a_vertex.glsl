@@ -1,7 +1,7 @@
 varying vec3 pos;
-uniform float u_time;
 uniform vec2 u_resolution;
-uniform float u_density;
+uniform float u_time;
+uniform sampler2D u_density;
 
 void main()	{
     vec4 result;

@@ -10,23 +10,25 @@ import scene_glsl from './scene.glsl';
 import vertexShaderCode from './a_vertex.glsl';
 import fragmentShaderCode from './a_fragment.glsl';
 
+import { constructGradientDensityArr } from './tests';
+import Quaternion from 'quaternion';
+
 export default function App(): JSX.Element {
   useEffect(() => {
     const test = new SceneInit('myThreeJsCanvas');
     test.initialize();
     test.animate();
 
-    // const buildTexForColors = ( colorArr: {
-    //   r: number,
-    //   g: number,
-    //   b: number,
-    //   a: number
-    // }[] ): THREE.Texture => {
-    //   const size = colorArr.length;
-    //   const buffer = new Uint8Array(4 * size);
+    const dataTex: THREE.DataTexture = constructGradientDensityArr(64, 0);
+    const q = new Quaternion( 0.1087553, 0.0, 0.1087553, 0.9840922 );
+    const qrm = q.toMatrix4(false)
 
-    // }
+    const rotation = new THREE.Matrix4();
+    rotation.set(
+        ...qrm
+    )
 
+    // console.log(dataTex);
     // define uniform data
     const uniformData = {
       u_resolution: {
@@ -37,17 +39,24 @@ export default function App(): JSX.Element {
         )
       },
       u_time: {
-        type: 'f',
-        value: test.clock.getElapsedTime(),
+        value: Math.round(test.clock.getElapsedTime()),
+      },
+      u_cube_pos: {
+        type: 'v3',
+        value: new THREE.Vector3(0, 0, -1)
       },
       u_density: {
-        type: '',
-        value: Math.sin(test.clock.getElapsedTime())/2 + 1,
+        type: 't',
+        value: dataTex,
+      },
+      u_cube_rot: {
+        value: rotation,
       }
     };
     const render = () => {
       uniformData.u_time.value = test.clock.getElapsedTime();
-      uniformData.u_density.value = Math.sin(test.clock.getElapsedTime())/2 + 1;
+      uniformData.u_density.value = constructGradientDensityArr(64, test.clock.getElapsedTime());
+      uniformData.u_cube_pos.value = new THREE.Vector3(Math.sin(test.clock.getElapsedTime())/10, Math.cos(test.clock.getElapsedTime())/10, -1)
       window.requestAnimationFrame(render);
     };
     render();
