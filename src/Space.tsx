@@ -16,12 +16,12 @@ import earthOrbitWest from './assets/Orbit_west.jpeg';
 import earthOrbitUp from './assets/Orbit_up.jpeg';
 import earthOrbitDown from './assets/Orbit_down.jpeg';
 
-import saturnOrbitNorth from './assets/ES_north.jpeg';
-import saturnOrbitSouth from './assets/ES_south.jpeg';
-import saturnOrbitEast from './assets/ES_east.jpeg';
-import saturnOrbitWest from './assets/ES_west.jpeg';
+import saturnOrbitNorth from './assets/ES_North.jpeg';
+import saturnOrbitSouth from './assets/ES_South.jpeg';
+import saturnOrbitEast from './assets/ES_East.jpeg';
+import saturnOrbitWest from './assets/ES_West.jpeg';
 import saturnOrbitUp from './assets/ES_up.jpeg';
-import saturnOrbitDown from './assets/ES_down.jpeg';
+import saturnOrbitDown from './assets/ES_Down.jpeg';
 
 import nightOrbitNorth from './assets/Sun_north.jpeg';
 import nightOrbitSouth from './assets/Sun_south.jpeg';
