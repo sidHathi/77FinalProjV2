@@ -75,7 +75,10 @@ type Backdrop =
      'saturn'|
       'stars';
 
-export default function Space({backdrop}: {backdrop: Backdrop}): JSX.Element {
+export default function Space({backdrop, width, height}: 
+    {backdrop: Backdrop,
+    width: number,
+    height: number}): JSX.Element {
 	const Shader = (props: {
         width: number,
         height: number
@@ -215,10 +218,10 @@ export default function Space({backdrop}: {backdrop: Backdrop}): JSX.Element {
 		);
 	};
 
-    return <Canvas style={{width: '100vw', height: '100vh'}}>
+    return <Canvas style={{width: width, height: height}}>
         <Shader 
-            width={2*window.innerWidth} 
-            height={2*window.innerHeight}
+            width={2*width} 
+            height={2*height}
         />
     </Canvas>
 }

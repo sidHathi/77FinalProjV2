@@ -2,12 +2,13 @@ import { Box, Button, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import React from 'react';
 import styles from './App.module.scss';
+import Space from './Space';
 
 import ParticleDisplay from "./Particles"
 
 export default function App(): JSX.Element {
 
-  const [scene, setScene] = useState('');
+  const [scene, setScene] = useState('earth_day');
   const [simWidth, setSimWidth] = useState<number>();
   const [simHeight, setSimHeight] = useState<number>();
   console.log(scene)
@@ -44,15 +45,7 @@ export default function App(): JSX.Element {
         </Box>
 
         <div className={styles.sim} id='sim'>
-          {scene === 'earth_day' ? null : null}
-          {scene === 'earth_night' ? null : null}
-          {scene === 'jupiter' ? null : null}
-          {scene === 'mars' ? null : null}
-          {scene === 'satellite' ? null : null}
-          {scene === 'rings' ? null : null}
-          {scene === 'saturn' ? null : null}
-          {scene === 'stars' ? null : null}
-
+          <Space backdrop={scene as any} width={simWidth || 0} height={simHeight || 0} />
         </div>
       </Box>
 
