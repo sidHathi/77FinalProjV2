@@ -104,7 +104,7 @@ export default function ParticleDisplay(): JSX.Element {
 		);
 	};
 
-    return <Canvas style={{width: '100vw', height: '100vh'}}>
+    return <Canvas style={{width: '50vw', height: '50vh'}}>
         <Shader 
             width={2*window.innerWidth} 
             height={2*window.innerHeight}
