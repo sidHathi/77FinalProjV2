@@ -82,9 +82,15 @@ float sdBox(vec3 p, vec3 half_bounds)
     return d;
 }
 
-
+//
+// Task 1.3
+//
+// Returns the signed distance from position p to a cylinder or radius r with an axis connecting the two points a and b.
+//
 float sdCylinder(vec3 p, vec3 a, vec3 b, float r)
 {
+
+// ################ Edit your code below ################
 
     vec3 ap = p - a;
     vec3 unitLine = normalize(b-a);
@@ -111,6 +117,12 @@ float sdCylinder(vec3 p, vec3 a, vec3 b, float r)
     }
 }
 
+//
+// Task 1.4
+//
+// Returns the signed distance from position p to a cone with axis connecting points a and b and (ra, rb) being the
+// radii at a and b respectively.
+//
 float sdCone(vec3 p, vec3 a, vec3 b, float ra, float rb)
 {
     vec3 ap = p - a;
@@ -166,8 +178,6 @@ float opRound(float d, float iso)
 {
     return d - iso;
 }
-
-
 
 ////////////////////////////////////////////////////
 // FOR TASK 3 & 4
