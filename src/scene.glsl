@@ -39,7 +39,7 @@ vec3 genDCoord(vec3 loc, int subdivSize) {
 
 vec3 sc_ray_color(in Scene s, in Ray r) {
     HitRecord rec;
-    if (sphere_hit(s.sphere, r, 0., 1./0.00000001, rec)) {
+    if (sphere_hit(s.sphere, r, 0., 1./0.000000000001, rec)) {
         vec3 dCoord = genDCoord(rec.p, 512);
         float density = dCoordVal(int(dCoord.x), int(dCoord.y), int(dCoord.z), 512);
         float rand = rand1(g_seed);

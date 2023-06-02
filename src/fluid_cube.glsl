@@ -5,18 +5,21 @@ struct FluidCube {
     mat4 rotation;
 };
 
-mat4 fc_basis(in FluidCube c) {
-    mat4 axes = mat4(1.);
-    axes *= c.rotation;
-    axes += mat4(vec4(0.), 
-    vec4(0.), vec4(0.), vec4(c.center, 1.));
-    return axes;
+mat4 fc_transform(in FluidCube c) {
+    mat4 translate = mat4(
+        vec4(1., 0., 0., 0.),
+        vec4(0., 1., 0., 0.),
+        vec4(0., 0., 1., 0.),
+        vec4(c.center, 1.)
+    );
+    return translate * c.rotation;
 }
 
 float fc_sd(in FluidCube c, in vec3 loc) {
-    mat4 axes = fc_basis(c);
     vec3 half_bounds = vec3(c.scale * float(c.subdiv) / 2.);
-    vec3 p = (inverse(axes) * vec4(loc, 1.)).xyz;
+    vec3 p = (inverse(fc_transform(c)) * vec4(loc, 1.)).xyz;
+
+    return length(max(abs(p)-half_bounds,0.0));
 
     float d = 0.;
     if (abs(p.x) < half_bounds.x && abs(p.y) < half_bounds.y && abs(p.z) < half_bounds.z) {

@@ -1,7 +1,7 @@
 // Ray tracing in one weekend basecode for Dartmouth CS 77/177
 // by Wojciech Jarosz, 2019
 
-#define EPSILON 1e-3
+#define EPSILON 1e-4
 #define MAX_FLOAT 3.402823466e+38
 #define MAX_RECURSION 50
 #define PI 3.1415926535897932384626433832795

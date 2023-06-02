@@ -37,7 +37,7 @@ export default class SceneInit {
     this.renderer = new THREE.WebGLRenderer({
       canvas,
       // NOTE: Anti-aliasing smooths out the edges.
-      antialias: true,
+      antialias: false,
     });
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     // this.renderer.shadowMap.enabled = true;
@@ -47,18 +47,6 @@ export default class SceneInit {
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
     this.stats = Stats();
     document.body.appendChild(this.stats.dom);
-
-    // ambient light which is for the whole scene
-    this.ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-    this.ambientLight.castShadow = true;
-    this.scene.add(this.ambientLight);
-
-    // directional light - parallel sun rays
-    this.directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-    // this.directionalLight.castShadow = true;
-    this.directionalLight.position.set(0, 32, 64);
-    this.scene.add(this.directionalLight);
-
     // if window resizes
     window.addEventListener('resize', () => this.onWindowResize(), false);
 
